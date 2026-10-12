@@ -1,7 +1,40 @@
 # CryptoVault — Server-Rendered Full-Stack Cryptocurrency Wallet Platform
 
 **Author:** Adabala Pushkaran • **Roll No:** 24EG105R65  
-**Working Stack:** Maven • Spring Boot 3.3.4 • Thymeleaf • Lombok • MySQL 8.0 / H2 • Spring Security 6 • DevTools • Vanilla CSS
+**Working Stack:** Maven Multi-Module • Spring Boot 3.3.4 • Thymeleaf • MySQL 8.0 / H2 • Spring Security 6 • Vanilla CSS Design System • Modern JS
+
+---
+
+## 📂 Project Architecture: Separated Backend & Frontend
+
+The codebase is organized into cleanly segregated **`backend/`** and **`frontend/`** directory structures:
+
+```
+TT project/
+├── pom.xml                  # Parent Aggregator POM
+├── backend/                 # Backend Java Spring Boot Service
+│   ├── pom.xml              # Spring Boot Maven POM
+│   ├── README.md            # Backend Architecture Guide
+│   └── src/
+│       ├── main/
+│       │   ├── java/        # Controllers, Services, Entities, DTOs, Security
+│       │   └── resources/   # Configuration, schema.sql, templates & static
+│       └── test/            # Integration & unit test suite
+├── frontend/                # Frontend UI, Templates, CSS & JS
+│   ├── package.json         # Frontend metadata & scripts
+│   ├── README.md            # Frontend Design System Guide
+│   ├── css/                 # Vanilla CSS stylesheets (design system tokens)
+│   ├── js/                  # Client-side JavaScript islands & live ticker polling
+│   └── templates/           # Semantic Thymeleaf view templates
+│       ├── admin/           # Administrative command views
+│       ├── auth/            # Sign in & Registration
+│       ├── dashboard/       # Portfolio metrics & overview
+│       ├── fragments/       # Common reusable navigation & layout
+│       ├── notifications/   # In-app notifications
+│       ├── profile/         # Profile & security session manager
+│       ├── transactions/    # Ledger, Send crypto, Receive QR & Receipts
+│       └── wallets/         # Multi-asset vault management
+```
 
 ---
 
@@ -58,51 +91,25 @@
 
 ### Prerequisites
 - **Java:** JDK 17, 21, or 25
-- **Maven:** 3.8+ (Included or system Maven)
+- **Maven:** 3.8+ (or bundled wrapper)
 
-### Run in Zero-Setup Mode (Instant H2 in-memory MySQL Mode)
+### Build
+From the project root:
 ```bash
+mvn clean compile
+```
+
+### Run
+Launch the application:
+```bash
+mvn --projects backend spring-boot:run
+```
+Or navigate into `backend/` and run:
+```bash
+cd backend
 mvn spring-boot:run
 ```
-The application will launch on **`http://localhost:8085/`**.
 
-### Run with Production MySQL 8.0
-1. Ensure MySQL service is running on `localhost:3306`.
-2. Start the application with the MySQL profile:
-```bash
-mvn spring-boot:run -Dspring-boot.run.profiles=mysql
-```
-*Note: MySQL credentials can be overridden via `MYSQL_USER` and `MYSQL_PASSWORD` environment variables or in `src/main/resources/application-mysql.properties`.*
-
----
-
-## 🌐 5. Core Application Routes & Features
-
-### 🌟 Public & SEO Delivery
-- **`/`**: High-performance landing page with hero banner, live market ticker island, and instant crypto calculator.
-- **`/about`**: 5-layer architecture specification, technical documentation, and author attribution.
-- **`/faq`**: Frequently Asked Questions & system mechanics.
-- **`/sitemap.xml` & `/robots.txt`**: Dynamic search engine crawler endpoints.
-
-### 💼 Authenticated Vault Workflows
-- **`/dashboard`**: Total portfolio net worth calculation in INR (₹) and USD ($), multi-asset balance cards, and interactive trend chart island.
-- **`/wallets`**: Manage multi-chain addresses, create new currency vaults, and access simulated deposit gateway.
-- **`/wallets/{id}`**: Vault detail view with interactive Canvas QR code generator and testnet faucet claim.
-- **`/transactions/send`**: Instant P2P cryptographic transfer with real-time address validation, network gas calculation, and atomic execution.
-- **`/transactions/receive`**: Dedicated payment receiving interface with selectable currency vaults and QR codes.
-- **`/transactions/{id}/receipt`**: Printable cryptographic transaction receipt and blockchain explorer proof.
-- **`/notifications`**: Real-time security alerts and transfer notifications.
-- **`/profile`**: Account settings, password change with BCrypt, and active login session management.
-
-### 🛡️ Admin Command Center
-- **`/admin`**: System overview metrics (Total volume in INR, registered users, confirmed transactions).
-- **`/admin/users`**: Manage platform user accounts (activate / suspend).
-- **`/admin/currencies`**: Real-time exchange rate management (update INR & USD prices).
-- **`/admin/transactions`**: System-wide ledger audit log.
-
----
-
-## 🎨 6. Design Philosophy: Framework-Light & Device-First
-- Handcrafted **Vanilla CSS** with design tokens for dark mode, glassmorphism, and responsive flex/grid layouts.
-- Zero heavyweight client frameworks for core pages — fast first paint under 50ms.
-- **Minimal JavaScript Islands** only where live interactivity matters (Ticker Poller, Canvas QR Generator, Chart.js trend visualizer, Real-time address validator).
+Access the application in your browser:
+- **Web App URL:** [http://localhost:8085](http://localhost:8085)
+- **H2 Database Console:** [http://localhost:8085/h2-console](http://localhost:8085/h2-console) (JDBC URL: `jdbc:h2:mem:cryptovaultdb`, User: `sa`, Password: *empty*)
