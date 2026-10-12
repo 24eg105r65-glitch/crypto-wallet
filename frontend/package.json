@@ -1,13 +1,13 @@
 {
   "name": "cryptovault-frontend",
+  "type": "module",
   "version": "1.0.0",
   "description": "CryptoVault Frontend — Server-Rendered UI, Vanilla CSS Design System, Dynamic JavaScript Islands",
   "author": "Adabala Pushkaran (24EG105R65)",
   "scripts": {
-    "dev": "echo \"Frontend templates and assets are served directly through Spring Boot Thymeleaf on http://localhost:8085/\"",
-    "build": "echo \"Production assets packaged via Maven in backend/src/main/resources/\"",
-    "test:visual:desktop": "npx playwright screenshot --channel chrome --viewport-size \"1440,900\" index.html visual-desktop.png",
-    "test:visual:mobile": "npx playwright screenshot --channel chrome --viewport-size \"375,812\" index.html visual-mobile.png"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "keywords": [
     "cryptocurrency",
@@ -17,5 +17,17 @@
     "thymeleaf",
     "responsive"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@vitejs/plugin-react": "^6.1.2",
+    "lucide-react": "^1.55.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-router-dom": "^7.18.4",
+    "vite": "^8.3.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  }
 }

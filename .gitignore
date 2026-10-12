@@ -38,3 +38,5 @@ target/
 .DS_Store
 Thumbs.db
 .firebase/
+node_modules/
+

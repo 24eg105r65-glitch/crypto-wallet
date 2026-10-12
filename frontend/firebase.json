@@ -1,13 +1,12 @@
 {
   "hosting": {
-    "public": ".",
+    "public": "dist",
     "cleanUrls": true,
     "rewrites": [
-      { "source": "/login", "destination": "/login.html" },
-      { "source": "/register", "destination": "/register.html" },
-      { "source": "/signup", "destination": "/register.html" },
-      { "source": "/logout", "destination": "/logout.html" },
-      { "source": "/dashboard", "destination": "/dashboard.html" }
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
     ],
     "ignore": [
       "firebase.json",
