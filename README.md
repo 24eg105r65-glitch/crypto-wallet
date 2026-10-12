@@ -3,6 +3,10 @@
 **Author:** Adabala Pushkaran • **Roll No:** 24EG105R65  
 **Working Stack:** Maven Multi-Module • Spring Boot 3.3.4 • Thymeleaf • MySQL 8.0 / H2 • Spring Security 6 • Vanilla CSS Design System • Modern JS
 
+### 🔗 Repositories
+- **Backend Repository:** [https://github.com/24eg105r65-glitch/crypto-wallet](https://github.com/24eg105r65-glitch/crypto-wallet)
+- **Frontend Repository:** [https://github.com/24eg105r65-glitch/crypto-wallet-frontend](https://github.com/24eg105r65-glitch/crypto-wallet-frontend)
+
 ---
 
 ## 📂 Project Architecture: Separated Backend & Frontend
